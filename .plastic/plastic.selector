@@ -1,0 +1,4 @@
+repository "Stroids@SudoLudens@cloud"
+  path "/"
+    br "/main"
+    co "/main"

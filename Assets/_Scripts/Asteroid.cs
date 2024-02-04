@@ -8,24 +8,26 @@ public class Asteroid : MonoBehaviour
     // Random rotation direction
     // On collision, destroy, add to score
 
-    [SerializeField] private float moveSpeed = 1;
-    [SerializeField] private float rotationSpeed = 1;
+    [SerializeField] private float _moveSpeed = 1;
+    [SerializeField] private float _rotationSpeed = 1;
 
-    [SerializeField] private string projectileTag = "Projectile";
+    [SerializeField] private string _projectileTag = "Projectile";
 
-    private float rotationDir;
+    private float _rotationDir;
 
-    private Vector2 movementDir;
+    private Vector2 _movementDir;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D _rigidBody;
+    private ObjectSpawner _objectSpawner;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rigidBody = GetComponent<Rigidbody2D>();
+        _objectSpawner = GetComponent<ObjectSpawner>();
 
-        rotationDir = GetRandomRotationDir();
+        _rotationDir = GetRandomRotationDir();
 
-        movementDir = GetRandomMovementDir();
+        _movementDir = GetRandomMovementDir();
     }
 
     void Update()
@@ -36,9 +38,9 @@ public class Asteroid : MonoBehaviour
     void FixedUpdate()
     {
         // TODO: Random movement direction
-        rb.MovePosition(rb.position + movementDir * moveSpeed * Time.deltaTime);
+        _rigidBody.MovePosition(_rigidBody.position + _movementDir * _moveSpeed * Time.deltaTime);
 
-        rb.MoveRotation(rb.rotation + rotationSpeed * rotationDir);
+        _rigidBody.MoveRotation(_rigidBody.rotation + _rotationSpeed * _rotationDir);
     }
 
     private int GetRandomRotationDir()
@@ -61,7 +63,7 @@ public class Asteroid : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(projectileTag))
+        if (collision.gameObject.CompareTag(_projectileTag))
         {
             Destroy(this.gameObject);
         }

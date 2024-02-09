@@ -13,6 +13,8 @@ public class Asteroid : MonoBehaviour
 
     [SerializeField] private string _projectileTag = "Projectile";
 
+    [SerializeField] private bool _spawnObjectsOnDestroy;
+
     private float _rotationDir;
 
     private Vector2 _movementDir;
@@ -23,11 +25,17 @@ public class Asteroid : MonoBehaviour
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
-        _objectSpawner = GetComponent<ObjectSpawner>();
 
         _rotationDir = GetRandomRotationDir();
 
         _movementDir = GetRandomMovementDir();
+
+        if (_spawnObjectsOnDestroy)
+        {
+            _objectSpawner = GetComponent<ObjectSpawner>();
+
+        }
+
     }
 
     void Update()
@@ -65,6 +73,10 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(_projectileTag))
         {
+            if (_spawnObjectsOnDestroy)
+            {
+                _objectSpawner.SpawnObjects();
+            }
             Destroy(this.gameObject);
         }
     }

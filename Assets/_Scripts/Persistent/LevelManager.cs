@@ -6,31 +6,39 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private string sceneName;
+    [SerializeField] private string _mainMenu;
+    public static string MainMenu { get; private set; }
 
-    private int number = 0;
+    [SerializeField] private string _levelOne;
+    public static string LevelOne { get; private set; }
+
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
 
-        number++;
-        print(number);
+        MainMenu = _mainMenu;
+        LevelOne = _levelOne;
     }
 
     private void Start()
     {
-        
+
     }
 
     private void Update()
     {
-        
+
     }
 
-    public void ChangeToSampleScene()
+    public void ChangeToNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public static void ChangeLevel(string targetLevel)
+    {
+        SceneManager.LoadScene(targetLevel);
     }
 
     public void QuitGame()

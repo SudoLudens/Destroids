@@ -29,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4818234181871792453}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.39, y: 0.41, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &531672026417712404
 SpriteRenderer:
@@ -163,9 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c01feebbc5dd124da63e94db2491029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.75
-  rotationSpeed: 0.5
-  projectileTag: Projectile
+  _moveSpeed: 1
+  _rotationSpeed: 1
+  _projectileTag: Projectile
+  _spawnObjectsOnDestroy: 1
 --- !u!114 &4479592526784768025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,4 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be654b256fca984a9bfd10748d893ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 4818234181871792453, guid: a28b682664d799c428bb60db6dd1abb1, type: 3}
+  _objectToSpawn: {fileID: 4818234181871792453, guid: a28b682664d799c428bb60db6dd1abb1, type: 3}
+  _spawnCount: 2

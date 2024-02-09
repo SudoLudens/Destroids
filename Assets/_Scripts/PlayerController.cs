@@ -35,6 +35,11 @@ public class PlayerController : MonoBehaviour
 
         // Shoot cooldown
         CooldownTimer();
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            LevelManager.ChangeLevel(LevelManager.MainMenu);
+        }
     }
 
     private void FixedUpdate()

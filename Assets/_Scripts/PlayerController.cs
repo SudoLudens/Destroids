@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float thrustSpeed = 10;
     [SerializeField] private float bulletCoolDownTime = 1;
 
+    private AudioSource shootSound;
+
     private Rigidbody2D playerBody;
 
     private float hInput;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
+        shootSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -73,6 +76,7 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(bullet, bulletSpawnPoint.position, transform.rotation);
             canShoot = false;
+            shootSound.Play();
 
             // Start cooldown timer
             activeTimerSeconds = bulletCoolDownTime;

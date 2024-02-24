@@ -1,0 +1,43 @@
+Destroids
+	How Player Damage Works
+		Any Damage
+			Hitstop (heavy)
+			Player dies
+			Lose a life
+	Entities
+		Asteroids
+			Small Asteroid
+				HP: 1
+				Destroyed on Death
+			Medium Asteroid
+				HP: 3
+				Spawns 2 Small Asteroids on Death
+			Large Asteroid
+				HP: 10
+				Spawns 2 Medium Asteroids on Death
+		Ships
+			Satellite
+				HP: 3
+	Levels
+		General
+			Entity (Enemy) Count
+				Show count (1) for each remaining entity
+			Flow
+				Kill entities
+				Final entity appears (like a boss fight)
+		Level 1
+			Normal Entities
+				Small Asteroids
+				Medium Asteroids
+			Final Entity
+				Large Asteroid
+		Level 2
+		Level 3
+	Player
+		Controls
+			Thrust
+				Up/W
+			Slow/Stop
+				Down/S
+			Shoot
+				Action/Space

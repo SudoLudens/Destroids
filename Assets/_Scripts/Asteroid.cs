@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Asteroid : MonoBehaviour
 {
     // Random movement direction
@@ -21,10 +22,16 @@ public class Asteroid : MonoBehaviour
 
     private Rigidbody2D _rigidBody;
     private ObjectSpawner _objectSpawner;
+    private AudioSource _audioSource;
+    private SpriteRenderer _spriteRenderer;
+    private CircleCollider2D _circleCollider;
 
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _circleCollider = GetComponent<CircleCollider2D>();
 
         _rotationDir = GetRandomRotationDir();
 
@@ -77,7 +84,16 @@ public class Asteroid : MonoBehaviour
             {
                 _objectSpawner.SpawnObjects();
             }
-            Destroy(this.gameObject);
+            _audioSource.Play();
+            _spriteRenderer.enabled = false;
+            _circleCollider.enabled = false;
+            //TODO - Visual feedback (particle if destroyed, flash if hit?)
+            Invoke("InvokeDestroy", 2f);
         }
+    }
+
+    private void InvokeDestroy()
+    {
+        Destroy(this.gameObject);
     }
 }
